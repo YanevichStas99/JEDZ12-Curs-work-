@@ -2,7 +2,7 @@ package com.company;
 
 import javafx.scene.canvas.GraphicsContext;
 
-public abstract class Figgure implements Shape {
+ public abstract class Figgure implements Shape  {
     protected GraphicsContext gc;
     protected double x;
     protected double y;
@@ -74,4 +74,6 @@ public abstract class Figgure implements Shape {
     public void setCount(int count) {
         this.count = count;
     }
-}
+
+
+ }

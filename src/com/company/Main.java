@@ -1,4 +1,5 @@
 package com.company;
+
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -9,13 +10,10 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import java.security.Key;
 
-
-public class Main  extends Application {
+public class Main extends Application {
 
     private static final int BOARD_WIDTH = 1000;
     private static final int BOARD_HEIGHT = 750;
@@ -46,15 +44,15 @@ public class Main  extends Application {
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                if(event.getCode() == KeyCode.DIGIT1){
+                if (event.getCode() == KeyCode.DIGIT1) {
                     System.out.println("1");
                     board.addBall();
                 }
-                if(event.getCode() == KeyCode.DIGIT2){
+                if (event.getCode() == KeyCode.DIGIT2) {
                     System.out.println("2");
                     board.addSquare();
                 }
-                if(event.getCode() == KeyCode.DIGIT3){
+                if (event.getCode() == KeyCode.DIGIT3) {
                     System.out.println("3");
                     board.addPolygon();
                 }
@@ -68,27 +66,28 @@ public class Main  extends Application {
                 }
                 if (event.getCode() == KeyCode.UP) {
                     System.out.println("UP");
-                   board.moveUp();
+                    board.moveUp();
                 }
                 if (event.getCode() == KeyCode.DOWN) {
                     System.out.println("DOWN");
                     board.moveDown();
                 }
-                if(event.getCode() == KeyCode.PAGE_DOWN){
+                if (event.getCode() == KeyCode.PAGE_DOWN) {
                     board.numberDawn();
                 }
-                if(event.getCode() == KeyCode.PAGE_UP){
+                if (event.getCode() == KeyCode.PAGE_UP) {
                     board.numberUp();
                 }
-                if(event.getCode()==KeyCode.Q){
+                if (event.getCode() == KeyCode.Q) {
                     board.increaseSize();
                 }
-                if(event.getCode()==KeyCode.W){
+                if (event.getCode() == KeyCode.W) {
                     board.decreaseSize();
                 }
-                if(event.isControlDown())
-
-                    board.clear();
+                if(event.getCode()==KeyCode.DELETE){
+                    board.delete();
+                }
+                board.clear();
                 board.draw();
                 primaryStage.setTitle(String.valueOf(Board.getNumber()));
             }
@@ -96,15 +95,20 @@ public class Main  extends Application {
         scene.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if(event.isControlDown() && event.getButton()==MouseButton.PRIMARY){
-                    System.out.println("left");
-                    board.group(event.getX(),event.getY());
+                if (event.isControlDown() && event.getButton() == MouseButton.PRIMARY) {
+                    board.group(event.getX(), event.getY());
+                }
+                if (event.isShiftDown() && event.getButton()==MouseButton.PRIMARY){
+                    try {
+                        board.copy(event.getX(), event.getY());
+                    } catch (CloneNotSupportedException e) {
+                        e.printStackTrace();
+                    }
                 }
 
             }
         });
     }
-
 
 
 }

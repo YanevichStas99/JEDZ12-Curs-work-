@@ -4,8 +4,12 @@ package com.company;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class Ball extends Figgure {
+public class Ball extends Figgure implements Cloneable {
 
+    @Override
+    public Object copy() throws CloneNotSupportedException {
+        return super.clone();
+    }
 
     public Ball(GraphicsContext gc, double x, double y, int count) {
         super(gc, x, y, count);
@@ -22,5 +26,8 @@ public class Ball extends Figgure {
         gc.strokeOval(x, y, DIAMETER, DIAMETER);
     }
 
+    @Override
+    public void addToGroup(Shape shape) {
 
+    }
 }

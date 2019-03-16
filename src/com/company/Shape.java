@@ -13,4 +13,6 @@ public interface Shape {
     double getY();
     int getDIAMETER();
     void setCount(int count);
+    void addToGroup(Shape shape);
+    Object copy() throws CloneNotSupportedException;
 }

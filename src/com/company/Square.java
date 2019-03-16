@@ -3,7 +3,12 @@ package com.company;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class Square extends Figgure {
+public class Square extends Figgure implements Cloneable{
+    @Override
+    public Object copy() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
     public Square(GraphicsContext gc, double x, double y, int count) {
         super(gc, x, y, count);
     }
@@ -18,5 +23,10 @@ public class Square extends Figgure {
         gc.setLineWidth(2);
 
         gc.strokeRect(x, y, DIAMETER, DIAMETER);
+    }
+
+    @Override
+    public void addToGroup(Shape shape) {
+
     }
 }
