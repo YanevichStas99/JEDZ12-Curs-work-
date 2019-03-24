@@ -30,4 +30,15 @@ public class Poligon extends Figgure implements Cloneable{
     public void addToGroup(Shape shape) {
 
     }
+
+    @Override
+    public String toString() {
+        return "Poligon{" +
+                "gc=" + gc +
+                ", x=" + x +
+                ", y=" + y +
+                ", DIAMETER=" + DIAMETER +
+                ", count=" + count +
+                '}';
+    }
 }

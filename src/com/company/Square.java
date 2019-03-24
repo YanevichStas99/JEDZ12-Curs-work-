@@ -29,4 +29,15 @@ public class Square extends Figgure implements Cloneable{
     public void addToGroup(Shape shape) {
 
     }
+
+    @Override
+    public String toString() {
+        return "Square{" +
+                "gc=" + gc +
+                ", x=" + x +
+                ", y=" + y +
+                ", DIAMETER=" + DIAMETER +
+                ", count=" + count +
+                '}';
+    }
 }

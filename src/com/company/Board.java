@@ -1,11 +1,16 @@
 package com.company;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import javafx.scene.canvas.GraphicsContext;
+import org.apache.commons.io.FileUtils;
 
+import java.io.*;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Board {
+public class Board  {
     private GraphicsContext gc;
     private int x = 10;
     private int y = 10;
@@ -127,10 +132,16 @@ public class Board {
                     shape1.setCount(tmpCount);
                     tmpCount++;
                 }
-                number = count - 1;
                 break;
             }
         }
+        for (Groupe groupe:groupes){
+            if(groupe.getCount()==number){
+                groupes.remove(groupe);
+                break;
+            }
+        }
+        number = count - 1;
     }
 
     public void group(double currentX, double currentY) {
@@ -145,7 +156,6 @@ public class Board {
                         }
                     }
                     if (tmpShape.getClass() == Groupe.class) {
-                        System.out.println("group");
                         tmpShape.addToGroup(shape);
                         shapes.remove(shape);
                         count--;
@@ -155,7 +165,6 @@ public class Board {
                             tmpCount++;
                         }
                     } else {
-                        System.out.println("not group");
                         Groupe groupe = new Groupe(gc, count);
                         groupe.addToGroup(shape);
                         groupe.addToGroup(tmpShape);
@@ -322,6 +331,34 @@ public class Board {
                 }
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        return "shapes=" + shapes
+                ;
+    }
+    public void read() throws IOException {
+        String json=null;
+        json=FileUtils.readFileToString(new File("saves.txt"),"UTF-8");
+        System.out.println(json);
+        Gson g = new Gson();
+        shapes=g.fromJson(json, (Type) Type.class);
+    }
+
+
+    public void saveToFile(){
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String s=shapes.toString();
+        String json=gson.toJson(s);
+        try {
+            FileUtils.writeStringToFile(new File("saves.txt"), json, "UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
     }
 }
 

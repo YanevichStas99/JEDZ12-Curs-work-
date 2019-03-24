@@ -108,4 +108,14 @@ public class Groupe implements Shape  {
             shape.setCount(count);
         }
     }
+
+    public Groupe() {
+    }
+
+    @Override
+    public String toString() {
+        return "Groupe{" +
+                "shapes=" + shapes +
+                '}';
+    }
 }

@@ -12,23 +12,27 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 
 public class Main extends Application {
 
     private static final int BOARD_WIDTH = 1000;
     private static final int BOARD_HEIGHT = 750;
-    private Board board;
+    private static Board board;
     private int x = 10;
     private int y = 10;
     private GraphicsContext gc;
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         launch(args);
+        board.saveToFile();
     }
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws IOException {
         primaryStage.setTitle(String.valueOf(Board.getNumber()));
         Canvas canvas = new Canvas();
         canvas.setWidth(BOARD_WIDTH);
@@ -39,37 +43,35 @@ public class Main extends Application {
         primaryStage.show();
         GraphicsContext gc = canvas.getGraphicsContext2D();
         board = new Board(gc);
+        //board.read();
         board.draw();
+        gc.strokeText("Create: 1,2,3; change active figure:" +
+                " pgUp,pgDown; move: arrows; change size: Q,W; " +
+                "delete: DELETE; group: Ctrl+lmb;" +
+                "copy: Shift+lmb", 20, 20);
 
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 if (event.getCode() == KeyCode.DIGIT1) {
-                    System.out.println("1");
                     board.addBall();
                 }
                 if (event.getCode() == KeyCode.DIGIT2) {
-                    System.out.println("2");
                     board.addSquare();
                 }
                 if (event.getCode() == KeyCode.DIGIT3) {
-                    System.out.println("3");
                     board.addPolygon();
                 }
                 if (event.getCode() == KeyCode.LEFT) {
-                    System.out.println("LEFT");
                     board.moveLeft();
                 }
                 if (event.getCode() == KeyCode.RIGHT) {
-                    System.out.println("RIGHT");
                     board.moveRight();
                 }
                 if (event.getCode() == KeyCode.UP) {
-                    System.out.println("UP");
                     board.moveUp();
                 }
                 if (event.getCode() == KeyCode.DOWN) {
-                    System.out.println("DOWN");
                     board.moveDown();
                 }
                 if (event.getCode() == KeyCode.PAGE_DOWN) {

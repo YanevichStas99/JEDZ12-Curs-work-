@@ -75,5 +75,6 @@ import javafx.scene.canvas.GraphicsContext;
         this.count = count;
     }
 
-
+     public Figgure() {
+     }
  }

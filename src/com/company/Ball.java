@@ -27,7 +27,17 @@ public class Ball extends Figgure implements Cloneable {
     }
 
     @Override
-    public void addToGroup(Shape shape) {
+    public void addToGroup(Shape shape) {}
 
+    @Override
+    public String toString() {
+        return "Ball{" +
+                "gc=" + gc +
+                ", x=" + x +
+                ", y=" + y +
+                ", DIAMETER=" + DIAMETER +
+                ", count=" + count +
+                '}';
     }
+
 }
