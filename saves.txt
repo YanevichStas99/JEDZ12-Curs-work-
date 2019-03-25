@@ -1,1 +1,53 @@
-"[]"
+{
+  "activeNumber": 3,
+  "shapes": [
+    {
+      "type": "Ball",
+      "x": 10.0,
+      "y": 10.0,
+      "DIAMETER": 20,
+      "count": 1
+    },
+    {
+      "type": "Poligon",
+      "x": 175.0,
+      "y": 10.0,
+      "DIAMETER": 50,
+      "count": 2
+    },
+    {
+      "type": "Poligon",
+      "x": 10.0,
+      "y": 245.0,
+      "DIAMETER": 90,
+      "count": 3
+    },
+    {
+      "type": "Groupe",
+      "count": 4,
+      "shapes": [
+        {
+          "type": "Poligon",
+          "x": 430.0,
+          "y": 325.0,
+          "DIAMETER": 70,
+          "count": 4
+        },
+        {
+          "type": "Square",
+          "x": 485.0,
+          "y": 145.0,
+          "DIAMETER": 90,
+          "count": 4
+        },
+        {
+          "type": "Square",
+          "x": 315.0,
+          "y": 65.0,
+          "DIAMETER": 90,
+          "count": 4
+        }
+      ]
+    }
+  ]
+}

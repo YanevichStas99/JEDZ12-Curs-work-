@@ -1,12 +1,17 @@
 package com.company;
 
+import com.google.gson.annotations.Expose;
 import javafx.scene.canvas.GraphicsContext;
 
  public abstract class Figgure implements Shape  {
     protected GraphicsContext gc;
+    @Expose
     protected double x;
+     @Expose
     protected double y;
+     @Expose
     protected int DIAMETER = 20;
+     @Expose
     protected int count;
 
     public Figgure(GraphicsContext gc, double x, double y, int count) {
@@ -16,7 +21,15 @@ import javafx.scene.canvas.GraphicsContext;
         this.count = count;
     }
 
-    @Override
+     public Figgure(GraphicsContext gc, double x, double y, int DIAMETER, int count) {
+         this.gc = gc;
+         this.x = x;
+         this.y = y;
+         this.DIAMETER = DIAMETER;
+         this.count = count;
+     }
+
+     @Override
     public void moveRight() {
         if (x < gc.getCanvas().getWidth() - DIAMETER) {
             x = x + 5;

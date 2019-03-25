@@ -1,12 +1,22 @@
 package com.company;
 
+import com.google.gson.annotations.Expose;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class Poligon extends Figgure implements Cloneable{
+    @Expose
+    private String type="Poligon";
+
+
     public Poligon(GraphicsContext gc, double x, double y, int count) {
         super(gc, x, y, count);
     }
+
+    public Poligon(GraphicsContext gc, double x, double y, int DIAMETER, int count) {
+        super(gc, x, y, DIAMETER, count);
+    }
+
     @Override
     public Object copy() throws CloneNotSupportedException {
         return super.clone();

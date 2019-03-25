@@ -1,10 +1,13 @@
 package com.company;
 
 
+import com.google.gson.annotations.Expose;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class Ball extends Figgure implements Cloneable {
+    @Expose
+    private String type="Ball";
 
     @Override
     public Object copy() throws CloneNotSupportedException {
@@ -13,6 +16,10 @@ public class Ball extends Figgure implements Cloneable {
 
     public Ball(GraphicsContext gc, double x, double y, int count) {
         super(gc, x, y, count);
+    }
+
+    public Ball(GraphicsContext gc, double x, double y, int DIAMETER, int count) {
+        super(gc, x, y, DIAMETER, count);
     }
 
     @Override

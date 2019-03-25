@@ -43,7 +43,8 @@ public class Main extends Application {
         primaryStage.show();
         GraphicsContext gc = canvas.getGraphicsContext2D();
         board = new Board(gc);
-        //board.read();
+        board.read();
+        primaryStage.setTitle(String.valueOf(Board.getNumber()));
         board.draw();
         gc.strokeText("Create: 1,2,3; change active figure:" +
                 " pgUp,pgDown; move: arrows; change size: Q,W; " +

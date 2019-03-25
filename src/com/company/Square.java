@@ -1,9 +1,14 @@
 package com.company;
 
+import com.google.gson.annotations.Expose;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class Square extends Figgure implements Cloneable{
+    @Expose
+    private String type="Square";
+
+
     @Override
     public Object copy() throws CloneNotSupportedException {
         return super.clone();
@@ -11,6 +16,10 @@ public class Square extends Figgure implements Cloneable{
 
     public Square(GraphicsContext gc, double x, double y, int count) {
         super(gc, x, y, count);
+    }
+
+    public Square(GraphicsContext gc, double x, double y, int DIAMETER, int count) {
+        super(gc, x, y, DIAMETER, count);
     }
 
     @Override

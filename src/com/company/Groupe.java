@@ -1,18 +1,22 @@
 package com.company;
 
+import com.google.gson.annotations.Expose;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Groupe implements Shape  {
+    @Expose
+    private String type="Groupe";
     protected GraphicsContext gc;
+    @Expose
     protected int count;
 
     public List<Shape> getShapes() {
         return shapes;
     }
-
+    @Expose
     private List<Shape> shapes = new ArrayList<>();
 
 
@@ -109,8 +113,6 @@ public class Groupe implements Shape  {
         }
     }
 
-    public Groupe() {
-    }
 
     @Override
     public String toString() {
